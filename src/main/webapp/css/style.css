@@ -1,0 +1,64 @@
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: #f3f5f8;
+    color: #1f2937;
+}
+
+.container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+.header { background: #00388f; color: #fff; box-shadow: 0 2px 4px rgba(0, 0, 0, .15); }
+.header-inner { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+.header h1 { margin: 0; font-size: 1.5rem; font-weight: 600; letter-spacing: .3px; }
+.env-badge {
+    background: rgba(255, 255, 255, .18);
+    border-radius: 999px;
+    padding: 4px 14px;
+    font-size: .8rem;
+    text-transform: uppercase;
+    letter-spacing: .8px;
+}
+
+main { padding-top: 28px; padding-bottom: 28px; }
+
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 18px; margin-bottom: 28px; }
+.card {
+    background: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    border-left: 5px solid #0057b8;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, .08);
+}
+.card.pending { border-left-color: #d97706; }
+.card.completed { border-left-color: #059669; }
+.card.failed { border-left-color: #dc2626; }
+.card-label { font-size: .85rem; color: #6b7280; text-transform: uppercase; letter-spacing: .5px; }
+.card-value { font-size: 2rem; font-weight: 600; margin-top: 6px; }
+
+.panel {
+    background: #fff;
+    border-radius: 8px;
+    padding: 20px 24px;
+    margin-bottom: 28px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, .08);
+}
+.panel h2 { margin: 0 0 16px; font-size: 1.1rem; font-weight: 600; }
+
+table { width: 100%; border-collapse: collapse; }
+th, td { padding: 12px 10px; text-align: left; border-bottom: 1px solid #e5e7eb; }
+th { font-size: .8rem; text-transform: uppercase; letter-spacing: .5px; color: #6b7280; background: #f9fafb; }
+tbody tr:hover { background: #f5f8fc; }
+.num { text-align: right; font-variant-numeric: tabular-nums; }
+
+.status { display: inline-block; padding: 3px 10px; border-radius: 999px; font-size: .8rem; font-weight: 600; }
+.status.completed { background: #d1fae5; color: #065f46; }
+.status.pending { background: #fef3c7; color: #92400e; }
+.status.failed { background: #fee2e2; color: #991b1b; }
+
+.sysinfo { display: grid; grid-template-columns: 200px 1fr; gap: 10px 16px; margin: 0; }
+.sysinfo dt { color: #6b7280; font-weight: 600; }
+.sysinfo dd { margin: 0; font-family: Consolas, "Courier New", monospace; }
+
+.footer { color: #9ca3af; font-size: .8rem; padding: 16px 0 32px; text-align: center; }
