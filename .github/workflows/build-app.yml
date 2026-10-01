@@ -5,6 +5,10 @@ on:
     branches: [main]
   workflow_dispatch:
 
+permissions:
+  id-token: write
+  contents: read
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -32,3 +36,20 @@ jobs:
           name: smartpayments-war
           path: target/smartpayments.war
           if-no-files-found: error
+
+      # Exchange GitHub's OIDC token for an Azure identity; no client secret is needed.
+      - name: Log in to Azure
+        uses: azure/login@v2
+        with:
+          client-id: ${{ secrets.AZURE_CLIENT_ID }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+
+      - name: Upload WAR to Azure Blob Storage
+        run: |
+          az storage blob upload \
+            --account-name sasmartpaymentspoc \
+            --container-name smartpayments-artifacts \
+            --name smartpayments-${{ github.sha }}.war \
+            --file target/smartpayments.war \
+            --auth-mode login
