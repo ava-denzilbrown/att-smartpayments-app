@@ -17,7 +17,7 @@ public final class SystemInfo {
     }
 
     public static String appVersion() {
-        return setting("app.version", "APP_VERSION", "1.0.0");
+        return setting("app.version", "APP_VERSION", "1.1.0");
     }
 
     public static String environment() {

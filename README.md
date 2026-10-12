@@ -41,7 +41,7 @@ The build version shown on the page defaults to `<project.version>-<timestamp>`.
 can override it, for example:
 
 ```bash
-mvn clean package -Dbuild.version=1.0.0-${GITHUB_RUN_NUMBER}
+mvn clean package -Dbuild.version=1.1.0-${GITHUB_RUN_NUMBER}
 ```
 
 ## Deploy to Tomcat
@@ -67,18 +67,18 @@ mvn clean package -Dbuild.version=1.0.0-${GITHUB_RUN_NUMBER}
 ## Configuration
 
 | Setting             | Java system property | Environment variable | Default |
-|---------------------|----------------------|----------------------|---------|
-| Application version | `app.version`        | `APP_VERSION`        | `1.0.0` |
+| ------------------- | -------------------- | -------------------- | ------- |
+| Application version | `app.version`        | `APP_VERSION`        | `1.1.0` |
 | Environment         | `app.environment`    | `APP_ENVIRONMENT`    | `local` |
 
 System properties take precedence over environment variables. With Tomcat, set them in
 `$CATALINA_HOME/bin/setenv.sh`, e.g.:
 
 ```bash
-export APP_VERSION=1.0.0
+export APP_VERSION=1.1.0
 export APP_ENVIRONMENT=green
 # or
-export CATALINA_OPTS="$CATALINA_OPTS -Dapp.version=1.0.0 -Dapp.environment=green"
+export CATALINA_OPTS="$CATALINA_OPTS -Dapp.version=1.1.0 -Dapp.environment=green"
 ```
 
 The **hostname** is resolved at runtime from the server (`HOSTNAME`/`COMPUTERNAME`
@@ -90,5 +90,10 @@ Blue or Green VM is serving the request.
 `GET /health` returns HTTP 200:
 
 ```json
-{"status":"UP","version":"1.0.0","environment":"green","hostname":"vm-smartpayments-green"}
+{
+  "status": "UP",
+  "version": "1.1.0",
+  "environment": "green",
+  "hostname": "vm-smartpayments-green"
+}
 ```

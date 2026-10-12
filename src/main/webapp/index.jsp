@@ -16,7 +16,7 @@
 <body>
 <header class="header">
     <div class="container header-inner">
-        <h1>Smart Payments</h1>
+        <h1>Smart Payments v<%= SystemInfo.html(SystemInfo.appVersion()) %></h1>
         <span class="env-badge"><%= SystemInfo.html(SystemInfo.environment()) %></span>
     </div>
 </header>
